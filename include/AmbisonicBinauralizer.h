@@ -71,6 +71,7 @@ public:
     */
     void Process(CBFormat* pBFSrc, float** ppfDst);
     void Process(CBFormat* pBFSrc, float** ppfDst, unsigned int nSamples);
+    void SetBinauralLowCPUUse(bool bLowCPUUse);
 
 protected:
     CAmbisonicDecoder m_AmbDecoder;
@@ -93,6 +94,8 @@ protected:
     std::vector<float> m_pfScratchBufferB;
     std::vector<float> m_pfScratchBufferC;
     std::vector<float> m_pfOverlap[2];
+
+    bool bLowCPU = true;
 
     HRTF *getHRTF(unsigned nSampleRate, std::string HRTFPath);
     virtual void ArrangeSpeakers();
